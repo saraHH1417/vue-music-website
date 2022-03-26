@@ -42,9 +42,9 @@ export default createStore({
       commit('toggleAuth');
     },
     async login({ commit }, payload) {
-      await signInWithEmailAndPassword(firebaseAuth, payload.email, payload.password);
-
-      commit('toggleAuth');
+      if (await signInWithEmailAndPassword(firebaseAuth, payload.email, payload.password)) {
+        commit('toggleAuth');
+      }
     },
     init_login({ commit }) {
       const user = firebaseAuth.currentUser;

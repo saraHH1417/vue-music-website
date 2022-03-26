@@ -4,9 +4,11 @@ import {
   signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 import { 
-  getFirestore, collection, doc, setDoc,
+  getFirestore, collection, doc, setDoc, addDoc,
 } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import { 
+  getStorage, ref, uploadBytesResumable, getDownloadURL, 
+} from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCjk90Xb0KSpYMnSBOTCmxp2HjmNva7RFs',
@@ -19,8 +21,10 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
-const usersCollection = collection(db, 'users');
 const firebaseStorage = getStorage();
+
+const usersCollection = collection(db, 'users');
+const songsCollection = collection(db, 'songs');
 
 // Initialize Firebase
 export {
@@ -38,5 +42,8 @@ export {
   // related to storage 
   firebaseStorage,
   ref,
-  uploadBytes,
+  uploadBytesResumable,
+  getDownloadURL,
+  songsCollection,
+  addDoc,
 };
