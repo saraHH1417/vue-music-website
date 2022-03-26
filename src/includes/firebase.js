@@ -6,6 +6,7 @@ import {
 import { 
   getFirestore, collection, doc, setDoc,
 } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCjk90Xb0KSpYMnSBOTCmxp2HjmNva7RFs',
@@ -19,6 +20,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 const usersCollection = collection(db, 'users');
+const firebaseStorage = getStorage();
 
 // Initialize Firebase
 export {
@@ -33,4 +35,8 @@ export {
   updateProfile,
   signInWithEmailAndPassword,
   signOut,
+  // related to storage 
+  firebaseStorage,
+  ref,
+  uploadBytes,
 };
