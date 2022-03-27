@@ -4,10 +4,10 @@ import {
   signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 import { 
-  getFirestore, collection, doc, setDoc, addDoc,
+  getFirestore, collection, doc, setDoc, addDoc, getDocs, query, where,
 } from 'firebase/firestore';
 import { 
-  getStorage, ref, uploadBytesResumable, getDownloadURL, 
+  getStorage, ref, uploadBytesResumable, getDownloadURL,
 } from 'firebase/storage';
 
 const firebaseConfig = {
@@ -46,4 +46,7 @@ export {
   getDownloadURL,
   songsCollection,
   addDoc,
+  query,
+  where,
+  getDocs,
 };
