@@ -106,12 +106,14 @@ export default {
         }
       });
     },
+    cancelUploads() {
+      this.uploads.forEach((upload) => {
+        upload.uploadTask.cancel();
+      });
+    },
   },
-  beforeUnmount() {
-    this.uploads.forEach((upload) => {
-      console.log(upload);
-      upload.uploadTask.cancel();
-    });
-  },
+  // beforeUnmount() {
+  //   this.cancelUploads();
+  // },
 };
 </script>
