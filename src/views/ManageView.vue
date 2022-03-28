@@ -10,7 +10,11 @@
           </div>
           <div class="p-6">
             <!-- Composition Items -->
-            <composition-item v-for="song in songs" :key="song.docID" :song="song"/>
+            <composition-item v-for="(song, index) in songs" :key="song.docID" 
+              :song="song" 
+              :updateSong="updateSong" 
+              :index="index"
+              :removeSong="removeSong"/>
           </div>  
         </div>
       </div>
@@ -37,6 +41,18 @@ export default {
     return {
       songs: [],
     };
+  },
+  methods: {
+    updateSong(index, values) {
+      // this.songs[index].modified_name = values.modified_name;
+      // this.songs[index].genra = values.genra;
+      Object.keys(this.songs[index]).forEach((key) => {
+        this.songs[index][key] = values[key];
+      });
+    },
+    removeSong(index) {
+      this.songs.splice(index, 1);
+    },
   },
   async created() {
     const q = query(songsCollection, where('uid', '==', firebaseAuth.currentUser.uid));
