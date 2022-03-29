@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ManageView from '@/views/ManageView.vue';
+import SongView from '@/views/SongView.vue';
 import store from '@/store';
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     // redirect is better for search engines compared to the alias
     path: '/manage',
     redirect: { name: 'manage' },
+  },
+  {
+    name: 'song',
+    path: '/song/:id',
+    component: SongView,
   },
   {
     path: '/:catchAll(.*)*',

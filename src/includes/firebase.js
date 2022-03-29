@@ -5,7 +5,7 @@ import {
 } from 'firebase/auth';
 import { 
   getFirestore, collection, doc, setDoc, addDoc, 
-  getDocs, query, where, updateDoc, deleteDoc, getDoc,
+  getDocs, query, where, updateDoc, deleteDoc, getDoc, limit, orderBy, startAfter,
 } from 'firebase/firestore';
 import { 
   getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject,
@@ -54,4 +54,7 @@ export {
   deleteObject,
   deleteDoc,
   getDoc,
+  limit,
+  orderBy,
+  startAfter,
 };

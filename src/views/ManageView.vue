@@ -60,7 +60,7 @@ export default {
         ...document.data(),
         docID: document.id,
       };
-      this.songs.push(song);
+      this.songs.unshift(song);
     },
     updateUnsavedFlag(value) {
       this.unsavedFlag = value;
