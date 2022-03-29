@@ -46,11 +46,18 @@
 
 <script>
 import { 
-  firebaseStorage, ref, uploadBytesResumable, firebaseAuth, getDownloadURL, songsCollection, addDoc,
+  firebaseStorage, ref, uploadBytesResumable, firebaseAuth, getDownloadURL,
+  songsCollection, addDoc, getDoc,
 } from '@/includes/firebase';
 
 export default {
   name: 'UploadComponent',
+  props: {
+    addSong: {
+      type: Function,
+      required: true,
+    },
+  },
   data() {
     return {
       is_dragover: false,
@@ -63,8 +70,7 @@ export default {
       const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files];
       files.forEach((file) => {
         if (file.type === 'audio/mpeg') {
-          const songRef = `songs/${file.name}`;
-          const songsRef = ref(firebaseStorage, songRef); 
+          const songsRef = ref(firebaseStorage, `songs/${file.name}`); 
           const uploadTask = uploadBytesResumable(songsRef, file);
           const uploadIndex = this.uploads.push({
             uploadTask,
@@ -97,7 +103,9 @@ export default {
             };
 
             song.url = await getDownloadURL(uploadTask.snapshot.ref);
-            await addDoc(songsCollection, song);
+            const songRef = await addDoc(songsCollection, song);
+            const songSnapshot = await getDoc(songRef);
+            this.addSong(songSnapshot);
 
             this.uploads[uploadIndex].variant = 'bg-green-400';
             this.uploads[uploadIndex].icon = 'fas fa-check';

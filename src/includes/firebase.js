@@ -4,7 +4,8 @@ import {
   signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 import { 
-  getFirestore, collection, doc, setDoc, addDoc, getDocs, query, where, updateDoc, deleteDoc,
+  getFirestore, collection, doc, setDoc, addDoc, 
+  getDocs, query, where, updateDoc, deleteDoc, getDoc,
 } from 'firebase/firestore';
 import { 
   getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject,
@@ -52,4 +53,5 @@ export {
   updateDoc,
   deleteObject,
   deleteDoc,
+  getDoc,
 };
