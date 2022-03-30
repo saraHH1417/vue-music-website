@@ -26,6 +26,7 @@ const firebaseStorage = getStorage();
 
 const usersCollection = collection(db, 'users');
 const songsCollection = collection(db, 'songs');
+const commentsCollection = collection(db, 'comments');
 
 // Initialize Firebase
 export {
@@ -57,4 +58,5 @@ export {
   limit,
   orderBy,
   startAfter,
+  commentsCollection,
 };
