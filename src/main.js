@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import VeeValidationPlugin from './includes/validation';
 import { firebaseApp, getAuth, onAuthStateChanged } from './includes/firebase';
+import Icon from './directives/icon';
 import './assets/tailwind.css';
 import './assets/main.css';
 
@@ -15,6 +16,8 @@ onAuthStateChanged(auth, () => {
     app.use(store);
     app.use(router);
     app.use(VeeValidationPlugin);
+    app.directive('icon', Icon);
+
     app.mount('#app');
   }
 });
