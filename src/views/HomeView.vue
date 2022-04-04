@@ -24,23 +24,22 @@
     <!-- Main Content -->
     <section class="container mx-auto">
       <div class="bg-white rounded border border-gray-200 relative flex flex-col">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
+             v-icon.right.yellow="'headphones-alt'">
+          <!--v-icon-secondary="{ icon: 'headphones-alt' , right: true , yellow: true}"-->
+          <!--v-icon.right.yellow="'headphones-alt'"-->
+          <!--v-icon:full="'headphones-alt'" if we want to replace-->
+          <!--the whole class name we add :full to the v-icon-->
           <span class="card-title">Songs</span>
           <!-- Icon -->
-          <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
-               v-icon-third="{ icon: 'headphones-alt', right: true, yellow: true}">
-            <!--v-icon-secondary="{ icon: 'headphones-alt' , right: true , yellow: true}"-->
-            <!--v-icon.right.yellow="'headphones-alt'"-->
-            <!--v-icon:full="'headphones-alt'" if we want to replace-->
-            <!--the whole class name we add :full to the v-icon-->
-        </div>
+         </div>
         <!-- Playlist -->
         <ol id="playlist">
           <app-song-item v-for="song in songs" :key="song.docID"
             :song="song"/>
         </ol>
         <!-- .. end Playlist -->
-      </div>
+       </div>
     </section>
   </main>
 </template>
@@ -61,7 +60,7 @@ export default {
     'icon-secondary': IconSecondary,
     'icon-third': {
       beforeMount(el, binding) {
-        let iconClass = `fa fa-${binding.value.icon} text-green-400 text-xl`;
+        let iconClass = `fa fa-${binding.value.icon} text-xl`;
         if (binding.value.right) {
           iconClass += ' float-right';
         }
