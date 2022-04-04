@@ -25,9 +25,11 @@
     <section class="container mx-auto">
       <div class="bg-white rounded border border-gray-200 relative flex flex-col">
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
-             v-icon="'headphones-alt'">
-          // v-icon:full="'headphones-alt'" if we want to replace
-          //the whole class name we add :full to the v-icon
+            v-icon-third="{ icon: 'headphones-alt', right: true, yellow: true}">
+<!--          v-icon-secondary="{ icon: 'headphones-alt' , right: true , yellow: true}"-->
+<!--          v-icon.right.yellow="'headphones-alt'"-->
+<!--          v-icon:full="'headphones-alt'" if we want to replace-->
+<!--          the whole class name we add :full to the v-icon-->
           <span class="card-title">Songs</span>
           <!-- Icon -->
 
@@ -48,11 +50,30 @@ import {
   songsCollection, getDocs, limit, doc, getDoc, orderBy, startAfter,
 } from '@/includes/firebase';
 import AppSongItem from '@/components/SongItem.vue';
+import IconSecondary from '@/directives/icon-secondary';
 
 export default {
   name: 'homeView',
   components: {
     AppSongItem,
+  },
+  directives: {
+    'icon-secondary': IconSecondary,
+    'icon-third': {
+      beforeMount(el, binding) {
+        let iconClass = `fa fa-${binding.value.icon} text-green-400 text-xl`;
+        if (binding.value.right) {
+          iconClass += ' float-right';
+        }
+        if (binding.value.yellow) {
+          iconClass += ' text-yellow-400';
+        } else {
+          iconClass += ' text-green-400';
+        }
+        // eslint-disable-next-line no-param-reassign
+        el.innerHTML += `<i class="${iconClass}"></i>`;
+      },
+    },
   },
   data() {
     return {

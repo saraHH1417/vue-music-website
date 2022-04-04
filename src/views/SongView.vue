@@ -32,7 +32,7 @@
             {{ comment_alert_message }}
           </div>
           <vee-form :validation-schema="commentSchema" @submit="addComment"
-            v-if="userLoggedIn">
+            v-if="userLoggedIn && firebaseAuth.currentUser">
             <label for="comment_text" class="hidden"></label>
             <vee-field as="textarea" id="comment_text" name="comment"
               class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
@@ -82,6 +82,7 @@ export default {
   data() {
     return {
       song: {},
+      firebaseAuth,
       commentSchema: {
         comment: 'required|min:3',
       },
