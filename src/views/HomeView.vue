@@ -27,7 +27,12 @@
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
           <span class="card-title">Songs</span>
           <!-- Icon -->
-
+          <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
+               v-icon-third="{ icon: 'headphones-alt', right: true, yellow: true}">
+            <!--v-icon-secondary="{ icon: 'headphones-alt' , right: true , yellow: true}"-->
+            <!--v-icon.right.yellow="'headphones-alt'"-->
+            <!--v-icon:full="'headphones-alt'" if we want to replace-->
+            <!--the whole class name we add :full to the v-icon-->
         </div>
         <!-- Playlist -->
         <ol id="playlist">
