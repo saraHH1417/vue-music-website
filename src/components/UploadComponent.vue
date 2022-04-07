@@ -69,6 +69,13 @@ export default {
       this.is_dragover = false;
       const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files];
       files.forEach((file) => {
+        if (file.type !== 'audio/mpeg') {
+          return;
+        }
+        if (!navigator.onLine) {
+
+        }
+
         if (file.type === 'audio/mpeg') {
           const songsRef = ref(firebaseStorage, `songs/${file.name}`); 
           const uploadTask = uploadBytesResumable(songsRef, file);
