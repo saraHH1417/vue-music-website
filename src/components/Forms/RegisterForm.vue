@@ -81,9 +81,9 @@
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
-        <label class="inline-block" for="tos">
-        Accept terms of service
-        </label>
+        <i18n-t class="inline-block" keypath="register.accept" tag="label" for="tos">
+          <a href="#">{{ $t('register.TOS') }}</a>
+        </i18n-t>
         <vee-field type="checkbox" name="tos" value="1"
         class="w-4 h-4 float-left -ml-6 mt-1 rounded" id="tos"/>
         <ErrorMessage class="text-red-600 block" name="tos"/>

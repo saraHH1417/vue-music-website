@@ -2,7 +2,14 @@
   "home": {
     "listen": "Listen to Great Music!"
   },
+  "register": {
+    "TOS": "Terms of Service",
+    "accept": "I accept Music's {0}"
+  },
   "song": {
     "comment_count": "No comment | 1 Comment | {count} Comments"
+  },
+  "manage": {
+    "my_songs": "My Songs"
   }
 }
