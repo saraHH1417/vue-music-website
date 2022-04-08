@@ -9,6 +9,7 @@ import './assets/tailwind.css';
 import './assets/main.css';
 import i18n from './includes/i18n';
 import './registerServiceWorker';
+import GlobalComponenst from './includes/_globals';
 
 let app;
 const auth = getAuth(firebaseApp);
@@ -18,6 +19,7 @@ onAuthStateChanged(auth, () => {
     app.use(store);
     app.use(router);
     app.use(VeeValidationPlugin);
+    app.use(GlobalComponenst);
     app.directive('icon', Icon);
 
     app.mount('#app');
