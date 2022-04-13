@@ -5,7 +5,7 @@ const requireModule = require.context('.', false, /\.js$/);
 const modules = {};
 
 requireModule.keys().forEach((fileName) => {
-  if (fileName === './index.js') {
+  if (fileName === './index.js' || fileName === './dummy.js') {
     return;
   }
   const moduleConfig = requireModule(fileName);
